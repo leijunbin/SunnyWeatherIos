@@ -9,7 +9,9 @@ import SwiftUI
 
 struct WeatherBackground: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image("bg_sun_noon")
+            .resizable()
+            .scaledToFill()
     }
 }
 

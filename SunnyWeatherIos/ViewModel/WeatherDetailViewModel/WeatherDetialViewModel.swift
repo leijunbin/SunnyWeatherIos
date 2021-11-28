@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class WeatherDetialViewModel: ObservableObject {
     
     private let weatherNetworkManger = WeatherNetworkManager()
-    
+    @Published var weatherDetialModel = WeatherDetialModel()
     
     //weatherNetworkManger.getWeather(lat: 116.409315, lon: 39.909229)
     
