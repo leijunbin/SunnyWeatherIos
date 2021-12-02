@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-let token = "cjVEVQndqLbtJ7H8"
+let weatherToken = "cjVEVQndqLbtJ7H8"
 
 enum WeatherService {
     case getWeather(lat: Double, lon: Double)
@@ -22,7 +22,7 @@ extension WeatherService: TargetType {
     var path: String {
         switch self {
         case .getWeather(let lat, let lon):
-            return "/v2.5/\(token)/\(lat),\(lon)/weather.json"
+            return "/v2.5/\(weatherToken)/\(lat),\(lon)/weather.json"
         }
     }
     

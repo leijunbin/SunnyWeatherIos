@@ -19,7 +19,9 @@ struct DailyWeatherInformation: View {
             }
             HStack(alignment: .center) {
                 Spacer()
-                Text(getSkyconName(skycon: dailyInformation.skycon))
+                Image(getSkyconImage(skycon: dailyInformation.skycon))
+                    .resizable()
+                    .frame(width: 25, height: 25, alignment: .center)
                 Spacer()
             }
         }

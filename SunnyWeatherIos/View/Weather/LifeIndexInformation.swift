@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct LifeIndexInformation: View {
+    var weatherDetialModel: WeatherDetialModel
+    
     var body: some View {
         HStack {
             VStack{
-                InformationView(des: "洗车", val: 0.0)
+                InformationView(des: "洗车", val: "\(weatherDetialModel.carWashing)")
                 Spacer()
                     .frame(height: 45)
-                InformationView(des: "紫外线", val: 0.0)
+                InformationView(des: "紫外线", val: "\(weatherDetialModel.ultraviolet)")
             }.padding()
             Spacer()
-                .frame(width: 70)
+                .frame(width: 60)
             VStack{
-                InformationView(des: "感冒", val: 0.0)
+                InformationView(des: "感冒", val: "\(weatherDetialModel.coldRisk)")
                 Spacer()
                     .frame(height: 45)
-                InformationView(des: "穿衣", val: 0.0)
+                InformationView(des: "穿衣", val: "\(weatherDetialModel.dressing)")
             }.padding()
         }
         .padding()
@@ -34,6 +36,6 @@ struct LifeIndexInformation: View {
 
 struct LifeIndexInformation_Previews: PreviewProvider {
     static var previews: some View {
-        LifeIndexInformation()
+        LifeIndexInformation(weatherDetialModel: WeatherDetialModel())
     }
 }

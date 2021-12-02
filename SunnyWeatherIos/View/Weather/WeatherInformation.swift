@@ -8,27 +8,29 @@
 import SwiftUI
 
 struct WeatherInformation: View {
+    var weatherDetialModel: WeatherDetialModel
+    
     var body: some View {
         HStack {
             VStack{
-                InformationView(des: "风向", val: 0.0)
+                InformationView(des: "风向", val: weatherDetialModel.windDir)
                 Spacer()
                     .frame(height: 45)
-                InformationView(des: "湿度", val: 0.0)
+                InformationView(des: "湿度", val: "\(weatherDetialModel.humidity)%")
                 Spacer()
                     .frame(height: 45)
-                InformationView(des: "能见度", val: 0.0)
+                InformationView(des: "能见度", val: "\(weatherDetialModel.visibility)km")
             }.padding()
             Spacer()
-                .frame(width: 70)
+                .frame(width: 45)
             VStack{
-                InformationView(des: "风速", val: 0.0)
+                InformationView(des: "风速", val: "\(weatherDetialModel.windSpeed)km/h")
                 Spacer()
                     .frame(height: 45)
-                InformationView(des: "气压", val: 0.0)
+                InformationView(des: "气压", val: "\(weatherDetialModel.pressure)hPa")
                 Spacer()
                     .frame(height: 45)
-                InformationView(des: "云量", val: 0.0)
+                InformationView(des: "体感", val: "\(weatherDetialModel.apparent_temperature)℃")
 
             }.padding()
         }
@@ -41,6 +43,6 @@ struct WeatherInformation: View {
 
 struct WeatherInformation_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherInformation()
+        WeatherInformation(weatherDetialModel: WeatherDetialModel())
     }
 }

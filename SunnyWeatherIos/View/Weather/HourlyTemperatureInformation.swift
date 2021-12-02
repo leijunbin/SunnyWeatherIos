@@ -16,7 +16,9 @@ struct HourlyTemperatureInformation: View {
                 ForEach(weatherDetialModel.hourlyInformation.indices, id: \.self){ i in
                     VStack(spacing: 5){
                         Text(weatherDetialModel.hourlyInformation[i].time)
-                        Text(getSkyconName(skycon: weatherDetialModel.hourlyInformation[i].skycon))
+                        Image(getSkyconImage(skycon: weatherDetialModel.hourlyInformation[i].skycon))
+                            .resizable()
+                            .frame(width: 30, height: 30, alignment: .center)
                         Text(String(Int(weatherDetialModel.hourlyInformation[i].hourlyTemperture)) + "℃")
                     }
                 }

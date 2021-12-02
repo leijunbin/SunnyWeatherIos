@@ -27,7 +27,10 @@ let skyconToName: [String : String] = [
     "STORM_SNOW" : "暴雪",
     "DUST" : "浮尘",
     "SAND" : "沙尘",
-    "WIND" : "大风"
+    "WIND" : "大风",
+    "SLEET" : "雨夹雪",
+    "THUNDER_SHOWER" : "雷阵雨",
+    "HAIL" : "冰雹"
 ]
 
 func getSkyconName(skycon: String) -> String {

@@ -38,6 +38,7 @@ struct Realtime: Codable {
     var visibility: Double
     var wind: Wind
     var pressure: Double
+    var apparent_temperature: Double
     var air_quality: Air_quality
 }
 
@@ -72,10 +73,15 @@ struct Hourly: Codable {
     var skycon: [DV]
 }
 
+struct DV: Codable {
+    var datetime: String
+    var value: String
+}
+
 struct Daily: Codable {
     var astro: [Astro]
     var temperature: [Temperature]
-    var skycon: [DV]
+    var skycon: [Skycon]
     var life_index: Life_index
 }
 
@@ -90,12 +96,12 @@ struct Time: Codable {
 }
 
 struct Temperature: Codable {
-    var date: String
+    var datetime: String
     var max: Double
     var min: Double
 }
 
-struct DV: Codable {
+struct Skycon: Codable {
     var date: String
     var value: String
 }
@@ -104,7 +110,6 @@ struct Life_index: Codable {
     var ultraviolet: [Index]
     var carWashing: [Index]
     var dressing: [Index]
-    var comfort: [Index]
     var coldRisk: [Index]
 }
 

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct InformationView: View {
     var des: String
-    var val: Double
+    var val: String
     var body: some View {
         VStack{
             Text(des)
                 .font(.system(size: 20))
                 .foregroundColor(.black)
             Spacer()
-            Text(String(val))
+            Text(val)
                 .font(.system(size: 20))
                 .foregroundColor(.black)
         }
@@ -26,6 +26,6 @@ struct InformationView: View {
 
 struct InformationView_Previews: PreviewProvider {
     static var previews: some View {
-        InformationView(des: "___", val: 0.0)
+        InformationView(des: "___", val: "0.0")
     }
 }
