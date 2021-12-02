@@ -22,7 +22,7 @@ struct WeatherInformation: View {
                 InformationView(des: "能见度", val: "\(weatherDetialModel.visibility)km")
             }.padding()
             Spacer()
-                .frame(width: 45)
+                .frame(width: 40)
             VStack{
                 InformationView(des: "风速", val: "\(weatherDetialModel.windSpeed)km/h")
                 Spacer()
