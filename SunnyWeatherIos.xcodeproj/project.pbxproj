@@ -46,7 +46,6 @@
 		9D6FFE5027375E3200519E1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FFE4F27375E3200519E1A /* ContentView.swift */; };
 		9D6FFE5227375E3400519E1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D6FFE5127375E3400519E1A /* Assets.xcassets */; };
 		9D6FFE5527375E3400519E1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D6FFE5427375E3400519E1A /* Preview Assets.xcassets */; };
-		9D6FFE5727375E3400519E1A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FFE5627375E3400519E1A /* Persistence.swift */; };
 		9D6FFE5A27375E3400519E1A /* SunnyWeatherIos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FFE5827375E3400519E1A /* SunnyWeatherIos.xcdatamodeld */; };
 		9D6FFE6427375E3400519E1A /* SunnyWeatherIosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FFE6327375E3400519E1A /* SunnyWeatherIosTests.swift */; };
 		9D6FFE6E27375E3400519E1A /* SunnyWeatherIosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FFE6D27375E3400519E1A /* SunnyWeatherIosUITests.swift */; };
@@ -54,6 +53,7 @@
 		9D6FFE842737712800519E1A /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FFE832737712800519E1A /* WeatherModel.swift */; };
 		9D6FFE872737B57200519E1A /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FFE862737B57200519E1A /* WeatherService.swift */; };
 		9D6FFE8D2737C01300519E1A /* WeatherNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FFE8C2737C01300519E1A /* WeatherNetworkManager.swift */; };
+		9DA7C8592759FBE0009EE64D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA7C8582759FBE0009EE64D /* Persistence.swift */; };
 		9DB0D23727390F5E00ACA064 /* WeatherDetialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0D23627390F5E00ACA064 /* WeatherDetialViewModel.swift */; };
 		9DB0D23C273914C400ACA064 /* WeatherDetial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0D23B273914C400ACA064 /* WeatherDetial.swift */; };
 		9DB0D23E2739192D00ACA064 /* WeatherBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0D23D2739192D00ACA064 /* WeatherBackground.swift */; };
@@ -124,7 +124,6 @@
 		9D6FFE4F27375E3200519E1A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9D6FFE5127375E3400519E1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D6FFE5427375E3400519E1A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9D6FFE5627375E3400519E1A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9D6FFE5927375E3400519E1A /* SunnyWeatherIos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SunnyWeatherIos.xcdatamodel; sourceTree = "<group>"; };
 		9D6FFE5F27375E3400519E1A /* SunnyWeatherIosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunnyWeatherIosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6FFE6327375E3400519E1A /* SunnyWeatherIosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyWeatherIosTests.swift; sourceTree = "<group>"; };
@@ -134,6 +133,7 @@
 		9D6FFE832737712800519E1A /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		9D6FFE862737B57200519E1A /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		9D6FFE8C2737C01300519E1A /* WeatherNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNetworkManager.swift; sourceTree = "<group>"; };
+		9DA7C8582759FBE0009EE64D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		9DB0D23627390F5E00ACA064 /* WeatherDetialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetialViewModel.swift; sourceTree = "<group>"; };
 		9DB0D23B273914C400ACA064 /* WeatherDetial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetial.swift; sourceTree = "<group>"; };
 		9DB0D23D2739192D00ACA064 /* WeatherBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBackground.swift; sourceTree = "<group>"; };
@@ -295,10 +295,10 @@
 				9D6FFE7D27376A1E00519E1A /* Server */,
 				9D6FFE7C27376A0400519E1A /* Model */,
 				9D6FFE5127375E3400519E1A /* Assets.xcassets */,
-				9D6FFE5627375E3400519E1A /* Persistence.swift */,
 				9D6FFE5827375E3400519E1A /* SunnyWeatherIos.xcdatamodeld */,
 				9D0527BA2758DA670047C390 /* resources */,
 				9D6FFE5327375E3400519E1A /* Preview Content */,
+				9DA7C8582759FBE0009EE64D /* Persistence.swift */,
 			);
 			path = SunnyWeatherIos;
 			sourceTree = "<group>";
@@ -698,8 +698,8 @@
 				9D0527B02758B1A40047C390 /* CityService.swift in Sources */,
 				9DB0D23E2739192D00ACA064 /* WeatherBackground.swift in Sources */,
 				9D3C07792753CC0400059C3F /* InformationView.swift in Sources */,
-				9D6FFE5727375E3400519E1A /* Persistence.swift in Sources */,
 				9D6FFE5027375E3200519E1A /* ContentView.swift in Sources */,
+				9DA7C8592759FBE0009EE64D /* Persistence.swift in Sources */,
 				9D6C7C1727575174006D4B6D /* WeatherScrollview.swift in Sources */,
 				9D4E6AC727448720006D0D2B /* TemperatureImformation.swift in Sources */,
 				9D6FFE4E27375E3200519E1A /* SunnyWeatherIosApp.swift in Sources */,
