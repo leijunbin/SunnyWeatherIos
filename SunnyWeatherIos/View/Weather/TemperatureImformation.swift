@@ -13,7 +13,6 @@ struct TemperatureImformation: View {
         HStack {
             HStack{
                 Text(String(Int(weatherDetialModel.temperature)))
-                    .italic()
                     .font(.system(size: 100))
                 VStack{
                     Text("℃")

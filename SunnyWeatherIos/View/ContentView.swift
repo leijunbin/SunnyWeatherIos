@@ -9,8 +9,24 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = .blue
+        
+        let scrollbarAppearance =  UINavigationBarAppearance()
+        scrollbarAppearance.configureWithTransparentBackground()
+        UINavigationBar.appearance().scrollEdgeAppearance = scrollbarAppearance
+        
+        let standardbarAppearance =  UINavigationBarAppearance()
+        standardbarAppearance.backgroundEffect = UIBlurEffect.init(style: .regular)
+        standardbarAppearance.shadowColor = .clear
+        standardbarAppearance.shadowColor = nil
+        UINavigationBar.appearance().standardAppearance = standardbarAppearance
+    }
+    
     var body: some View{
-        WeatherDetial()
+        NavigationView {
+            WeatherDetial()
+        }
     }
 }
 

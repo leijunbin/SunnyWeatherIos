@@ -14,7 +14,9 @@ class WeatherDetialViewModel: ObservableObject {
     private let cityNetworkManger = CityNetworkManager()
     private let disposeBag = DisposeBag()
     
+    @Published var currentIndex = 0
     @Published var weatherDetialModels = WeatherDetialModels()
+    @Published var isBack = false
     
     func refreshWeather(index: Int) {
         weatherNetworkManger.getWeather(lat: weatherDetialModels.models[index].lat, lon: weatherDetialModels.models[index].lon).subscribe(onNext:{ weatherModel in
@@ -49,6 +51,8 @@ class WeatherDetialViewModel: ObservableObject {
     
     func getCityName(index: Int) {
         cityNetworkManger.getCityName(lat: weatherDetialModels.models[index].lat, lon: weatherDetialModels.models[index].lon).subscribe(onNext: { cityModel in
+            self.weatherDetialModels.models[index].district = cityModel.regeocode.addressComponent.district
+            self.weatherDetialModels.models[index].township = cityModel.regeocode.addressComponent.township
             let cityName = cityModel.regeocode.addressComponent.district + " " + cityModel.regeocode.addressComponent.township
             self.weatherDetialModels.models[index].city = cityName
         })

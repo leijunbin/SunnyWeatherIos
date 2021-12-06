@@ -39,10 +39,10 @@ struct WeatherScrollview: View {
                     .padding(Edge.Set.init(arrayLiteral: .top, .bottom), 20)
                 Group {
                     Section(header:
-                                HStack{
-                        Text("气象信息")
-                            .font(.title2)
-                        Spacer()
+                        HStack{
+                            Text("气象信息")
+                                .font(.title2)
+                            Spacer()
                     }) {
                         WeatherInformation(weatherDetialModel: weatherDetialModel)
                     }
@@ -61,16 +61,6 @@ struct WeatherScrollview: View {
             .padding()
         }
         .navigationBarTitle(weatherDetialModel.city)
-        .navigationBarItems(trailing: addButton)
-    }
-    
-    private var addButton: some View {
-        Button(action: {
-            
-        }){
-            Image(systemName: "plus.circle.fill")
-                .font(.title)
-        }
     }
 }
 
