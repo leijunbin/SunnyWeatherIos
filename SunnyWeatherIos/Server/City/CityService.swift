@@ -36,7 +36,7 @@ extension CityService: TargetType {
     var task: Task {
         switch self {
         case .getCityName(let lat, let lon):
-            let parameters: [String: Any] = ["output" : "json", "location" : "\(lat),\(lon)", "key" : "\(mapToken)", "radius" : "10", "extensions" : "base"]
+            let parameters: [String: Any] = ["output" : "json", "location" : "\(lon),\(lat)", "key" : "\(mapToken)", "radius" : "10", "extensions" : "base"]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
     }

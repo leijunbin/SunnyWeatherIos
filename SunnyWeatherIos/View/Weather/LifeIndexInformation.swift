@@ -19,7 +19,7 @@ struct LifeIndexInformation: View {
                 InformationView(des: "紫外线", val: "\(weatherDetialModel.ultraviolet)")
             }.padding()
             Spacer()
-                .frame(width: 60)
+                .frame(width: 45)
             VStack{
                 InformationView(des: "感冒", val: "\(weatherDetialModel.coldRisk)")
                 Spacer()

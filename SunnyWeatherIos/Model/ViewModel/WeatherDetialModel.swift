@@ -8,11 +8,14 @@
 import Foundation
 
 struct WeatherDetialModels {
-    var models = [WeatherDetialModel](repeating: WeatherDetialModel(), count: 2)
+    var models = [WeatherDetialModel](repeating: WeatherDetialModel(), count: 3)
 }
 
 struct WeatherDetialModel {
     var city: String
+    var district: String
+    var township: String
+    
     var lat: Double
     var lon: Double
     
@@ -41,8 +44,8 @@ struct WeatherDetialModel {
     
     init(){
         city = "Beijing"
-        lat = 116.409315
-        lon = 39.909229
+        lat = 39.909229
+        lon = 116.409315
         temperature = 0.00
         skycon = "CLEAR_DAY"
         date = getDate()
@@ -58,6 +61,8 @@ struct WeatherDetialModel {
         coldRisk = "H"
         ultraviolet = "H"
         dressing = "H"
+        district = "Beijing"
+        township = "Xueyuanlu"
     }
 }
 
@@ -70,7 +75,7 @@ struct HourlyInformation {
     init() {
         time = "00:00"
         skycon = "CLEAR_DAY"
-        hourlyTemperture = 0.00
+        hourlyTemperture = -1.00
     }
 }
 
@@ -88,3 +93,4 @@ struct DailyInformation {
         dateMinTemperture = 0.00
     }
 }
+

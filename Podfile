@@ -9,7 +9,8 @@ target 'SunnyWeatherIos' do
   	pod 'Moya/RxSwift'
   	pod 'RxCoreLocation'
   	pod 'ExytePopupView'
-	pod ‘CleanJSON’
+	pod ‘CleanJSON'
+	pod 'SwiftUIRefresh'
 
   target 'SunnyWeatherIosTests' do
     inherit! :search_paths

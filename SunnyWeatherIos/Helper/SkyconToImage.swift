@@ -30,7 +30,7 @@ let skyconToImage: [String : String] = [
     "WIND" : "icon_gray_bg_sunny",
     "SLEET" : "icon_gray_bg_rain_snow",
     "THUNDER_SHOWER" : "icon_gray_bg_t_storm",
-    "HAIL" : "icon_gray_bg_ice_rain",
+    "HAIL" : "icon_gray_bg_ice_rain"
 ]
 
 func getSkyconImage(skycon: String) -> String {

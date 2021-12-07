@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct WeatherBackground: View {
+    var skycon: String
     var body: some View {
-        Image("bg_sun_noon")
+        Image(getSkyconBackground(skycon: skycon))
             .resizable()
             .scaledToFill()
     }
@@ -17,6 +18,6 @@ struct WeatherBackground: View {
 
 struct WeatherBackground_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherBackground()
+        WeatherBackground(skycon: "CLEAR_DAY")
     }
 }

@@ -12,6 +12,7 @@ let weatherToken = "cjVEVQndqLbtJ7H8"
 
 enum WeatherService {
     case getWeather(lat: Double, lon: Double)
+    case searchPlace(queryString: String)
 }
 
 extension WeatherService: TargetType {
@@ -22,7 +23,9 @@ extension WeatherService: TargetType {
     var path: String {
         switch self {
         case .getWeather(let lat, let lon):
-            return "/v2.5/\(weatherToken)/\(lat),\(lon)/weather.json"
+            return "/v2.5/\(weatherToken)/\(lon),\(lat)/weather.json"
+        case .searchPlace(_):
+            return "v2/place"
         }
     }
     
@@ -30,13 +33,18 @@ extension WeatherService: TargetType {
         switch self {
         case .getWeather(_, _):
             return .get
+        case .searchPlace(_):
+            return .get
         }
     }
     
     var task: Task {
         switch self {
         case .getWeather(_, _):
-            let parameters: [String: Any] = ["lang": "zh_CN","alert": "true"]
+            let parameters: [String: Any] = ["lang" : "zh_CN", "alert" : "true"]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        case .searchPlace(let queryString):
+            let parameters: [String: Any] = ["query" : "\(queryString)","token" : "\(weatherToken)", "lang" : "zh_CN"]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
     }
