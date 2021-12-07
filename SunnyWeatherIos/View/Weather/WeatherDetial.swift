@@ -22,7 +22,6 @@ struct WeatherDetial: View {
                             Image(systemName: "location")
                         }
                         .onAppear {
-                            viewModel.getCityName(index: i)
                             viewModel.refreshWeather(index: i)
                         }
                 }

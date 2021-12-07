@@ -15,8 +15,10 @@ class WeatherDetialViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
     
     @Published var currentIndex = 0
-    @Published var weatherDetialModels = WeatherDetialModels()
     @Published var isBack = false
+    
+    @Published var weatherDetialModels = WeatherDetialModels()
+    @Published var searchResultModel = SearchResultModel()
     
     func refreshWeather(index: Int) {
         weatherNetworkManger.getWeather(lat: weatherDetialModels.models[index].lat, lon: weatherDetialModels.models[index].lon).subscribe(onNext:{ weatherModel in
@@ -24,12 +26,12 @@ class WeatherDetialViewModel: ObservableObject {
             self.weatherDetialModels.models[index].skycon = weatherModel.result.realtime.skycon
             self.weatherDetialModels.models[index].dateMaxTemperture = weatherModel.result.daily.temperature.first?.max ?? 0.00
             self.weatherDetialModels.models[index].dateMinTemperture = weatherModel.result.daily.temperature.first?.min ?? 0.00
-            for i in 0..<24 {
+            for i in 0..<min(24, weatherModel.result.hourly.skycon.count) {
                 self.weatherDetialModels.models[index].hourlyInformation[i].time = self.getHourMinute(date: weatherModel.result.hourly.skycon[i].datetime)
                 self.weatherDetialModels.models[index].hourlyInformation[i].skycon = weatherModel.result.hourly.skycon[i].value
                 self.weatherDetialModels.models[index].hourlyInformation[i].hourlyTemperture = Double(weatherModel.result.hourly.temperature[i].value) ?? 0.00
             }
-            for i in 0..<5 {
+            for i in 0..<min(5, weatherModel.result.daily.skycon.count) {
                 self.weatherDetialModels.models[index].dailyInformation[i].time = self.getMouth(date: weatherModel.result.daily.skycon[i].date) + "月" + self.getDate(date: weatherModel.result.daily.skycon[i].date) + "日"
                 self.weatherDetialModels.models[index].dailyInformation[i].skycon = weatherModel.result.daily.skycon[i].value
                 self.weatherDetialModels.models[index].dailyInformation[i].dateMaxTemperture = weatherModel.result.daily.temperature[i].max
@@ -45,11 +47,33 @@ class WeatherDetialViewModel: ObservableObject {
             self.weatherDetialModels.models[index].coldRisk = weatherModel.result.daily.life_index.coldRisk.first?.desc ?? "H"
             self.weatherDetialModels.models[index].ultraviolet = weatherModel.result.daily.life_index.ultraviolet.first?.desc ?? "H"
             self.weatherDetialModels.models[index].dressing = weatherModel.result.daily.life_index.dressing.first?.desc ?? "H"
+            self.getCityName(index: index)
         })
         .disposed(by: disposeBag)
     }
     
-    func getCityName(index: Int) {
+    func getSearchResult(queryString: String) {
+        weatherNetworkManger.searchCity(queryString: queryString).subscribe(onNext: { searchModel in
+            for i in 0..<searchModel.places.count {
+                self.searchResultModel.result[i].formatted_address = searchModel.places[i].formatted_address
+                self.searchResultModel.result[i].lat = searchModel.places[i].location.lat
+                self.searchResultModel.result[i].lng = searchModel.places[i].location.lng
+            }
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    func addModels(lat: Double, lon: Double) {
+        var newModel = WeatherDetialModel()
+        newModel.lat = lat
+        newModel.lon = lon
+        weatherDetialModels.models.append(newModel)
+        let pos = weatherDetialModels.models.count - 1
+        refreshWeather(index: pos)
+        self.currentIndex = pos
+    }
+    
+    private func getCityName(index: Int) {
         cityNetworkManger.getCityName(lat: weatherDetialModels.models[index].lat, lon: weatherDetialModels.models[index].lon).subscribe(onNext: { cityModel in
             self.weatherDetialModels.models[index].district = cityModel.regeocode.addressComponent.district
             self.weatherDetialModels.models[index].township = cityModel.regeocode.addressComponent.township

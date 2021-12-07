@@ -41,7 +41,19 @@ struct CityManagerView: View {
         .navigationBarTitle("城市管理", displayMode: .large)
         .navigationBarItems(leading: backButton, trailing: editButton)
         .navigationBarBackButtonHidden(true)
-        .searchable(text: $queryString, placement: .navigationBarDrawer(displayMode: .always), prompt: "搜索全国城市")
+        .searchable(text: $queryString.onChange{ qString in            cityViewModel.getSearchResult(queryString: qString)
+        }, placement: .navigationBarDrawer(displayMode: .always), prompt: "搜索全国城市", suggestions: {
+            if !queryString.isEmpty {
+                ForEach(cityViewModel.searchResultModel.result.indices, id: \.self) { i in
+                    Text(cityViewModel.searchResultModel.result[i].formatted_address)
+                        .searchCompletion(String(i))
+                }
+            }
+        })
+        .onSubmit (of: .search){
+            let pos = Int(queryString) ?? 0
+            cityViewModel.addModels(lat: cityViewModel.searchResultModel.result[pos].lat, lon: cityViewModel.searchResultModel.result[pos].lng)
+        }
         .environment(\.editMode, $isEditMode)
     }
     
@@ -82,5 +94,17 @@ struct CityManagerView_Previews: PreviewProvider {
     static var previews: some View {
         CityManagerView(cityViewModel: WeatherDetialViewModel())
 .previewInterfaceOrientation(.portrait)
+    }
+}
+
+extension Binding {
+    func onChange(_ handler: @escaping (Value) -> Void) -> Binding<Value> {
+        Binding(
+            get: { self.wrappedValue },
+            set: { newValue in
+                self.wrappedValue = newValue
+                handler(newValue)
+            }
+        )
     }
 }

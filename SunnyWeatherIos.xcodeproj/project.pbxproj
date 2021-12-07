@@ -52,6 +52,7 @@
 		9D478B59275E45C100FB62DD /* frame_bg_thunder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D478B4B275E45C100FB62DD /* frame_bg_thunder.png */; };
 		9D478B5A275E45C100FB62DD /* frame_bg_hail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D478B4C275E45C100FB62DD /* frame_bg_hail.png */; };
 		9D478B5C275E552000FB62DD /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D478B5B275E552000FB62DD /* SearchModel.swift */; };
+		9D478B5E275E5AF500FB62DD /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D478B5D275E5AF500FB62DD /* SearchResultModel.swift */; };
 		9D4E6AC727448720006D0D2B /* TemperatureImformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E6AC627448720006D0D2B /* TemperatureImformation.swift */; };
 		9D4E6AC9274488AF006D0D2B /* DateInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E6AC8274488AF006D0D2B /* DateInformation.swift */; };
 		9D4E6ACB27448A0D006D0D2B /* Air_AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E6ACA27448A0D006D0D2B /* Air_AlertButton.swift */; };
@@ -148,6 +149,7 @@
 		9D478B4B275E45C100FB62DD /* frame_bg_thunder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_bg_thunder.png; sourceTree = "<group>"; };
 		9D478B4C275E45C100FB62DD /* frame_bg_hail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_bg_hail.png; sourceTree = "<group>"; };
 		9D478B5B275E552000FB62DD /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		9D478B5D275E5AF500FB62DD /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		9D4E6AC627448720006D0D2B /* TemperatureImformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureImformation.swift; sourceTree = "<group>"; };
 		9D4E6AC8274488AF006D0D2B /* DateInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInformation.swift; sourceTree = "<group>"; };
 		9D4E6ACA27448A0D006D0D2B /* Air_AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Air_AlertButton.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				9DB0D24027391A9C00ACA064 /* WeatherDetialModel.swift */,
+				9D478B5D275E5AF500FB62DD /* SearchResultModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				9D6C7C1727575174006D4B6D /* WeatherScrollview.swift in Sources */,
 				9D4E6AC727448720006D0D2B /* TemperatureImformation.swift in Sources */,
 				9D6FFE4E27375E3200519E1A /* SunnyWeatherIosApp.swift in Sources */,
+				9D478B5E275E5AF500FB62DD /* SearchResultModel.swift in Sources */,
 				9D6FFE872737B57200519E1A /* WeatherService.swift in Sources */,
 				9D4E6ACD27448B88006D0D2B /* HourlyTemperatureInformation.swift in Sources */,
 				9D0527B62758B8470047C390 /* CityNetworkManager.swift in Sources */,

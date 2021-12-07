@@ -44,8 +44,8 @@ struct WeatherDetialModel {
     
     init(){
         city = "Beijing"
-        lat = 116.409315
-        lon = 39.909229
+        lat = 39.909229
+        lon = 116.409315
         temperature = 0.00
         skycon = "CLEAR_DAY"
         date = getDate()
@@ -93,3 +93,4 @@ struct DailyInformation {
         dateMinTemperture = 0.00
     }
 }
+

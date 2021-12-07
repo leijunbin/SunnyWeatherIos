@@ -23,7 +23,7 @@ extension WeatherService: TargetType {
     var path: String {
         switch self {
         case .getWeather(let lat, let lon):
-            return "/v2.5/\(weatherToken)/\(lat),\(lon)/weather.json"
+            return "/v2.5/\(weatherToken)/\(lon),\(lat)/weather.json"
         case .searchPlace(_):
             return "v2/place"
         }
