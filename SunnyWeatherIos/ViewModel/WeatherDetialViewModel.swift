@@ -16,6 +16,7 @@ class WeatherDetialViewModel: ObservableObject {
     
     @Published var currentIndex = 0
     @Published var isBack = false
+    @Published var isAnimation = false
     
     @Published var weatherDetialModels = WeatherDetialModels()
     @Published var searchResultModel = SearchResultModel()
@@ -48,6 +49,7 @@ class WeatherDetialViewModel: ObservableObject {
             self.weatherDetialModels.models[index].ultraviolet = weatherModel.result.daily.life_index.ultraviolet.first?.desc ?? "H"
             self.weatherDetialModels.models[index].dressing = weatherModel.result.daily.life_index.dressing.first?.desc ?? "H"
             self.getCityName(index: index)
+            self.isAnimation = false
         })
         .disposed(by: disposeBag)
     }

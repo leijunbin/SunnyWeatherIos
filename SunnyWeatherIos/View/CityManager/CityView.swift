@@ -34,11 +34,11 @@ struct CityView: View {
             Spacer()
             Text(String(Int(weatherDetialModel.temperature)) + "℃")
                 .foregroundColor(.black)
-                .font(.system(size: 40))
+                .font(.system(size: 35))
                 .font(Font.headline.weight(.light))
         }
         .padding()
-        .background(Image("bg_cloudy").resizable().blur(radius: 5))
+        .background(Image(getSkyconBgframe(skycon:weatherDetialModel.skycon)).resizable().blur(radius: 5))
         .cornerRadius(20)
     }
 }

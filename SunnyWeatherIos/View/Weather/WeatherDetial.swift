@@ -8,6 +8,7 @@
 import SwiftUI
 import RxSwift
 import Alamofire
+import SwiftUIRefresh
 
 struct WeatherDetial: View {
     @ObservedObject var viewModel = WeatherDetialViewModel()
@@ -16,26 +17,35 @@ struct WeatherDetial: View {
         TabView(selection: $viewModel.currentIndex) {
             ForEach(viewModel.weatherDetialModels.models.indices, id: \.self) { i in
                 if i == 0 {
-                    WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i])
-                        .navigationBarItems(leading: addButton)
-                        .tabItem {
-                            Image(systemName: "location")
-                        }
-                        .onAppear {
-                            viewModel.refreshWeather(index: i)
-                        }
+                    ScrollView(.vertical, showsIndicators: false) {
+                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i])
+                            .navigationBarItems(leading: addButton)
+                            .tabItem {
+                                Image(systemName: "location")
+                            }
+                            .onAppear {
+                                viewModel.refreshWeather(index: i)
+                            }
+                    }
+                    .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
+                    .tabItem {
+                        Image(systemName: "location")
+                    }
                 }
                 else {
-                    WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i])
-                        .navigationBarItems(leading: addButton)
-                        .onAppear {
-                            viewModel.refreshWeather(index: i)
-                        }
+                    ScrollView(.vertical, showsIndicators: false) {
+                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i])
+                            .navigationBarItems(leading: addButton)
+                            .onAppear {
+                                viewModel.refreshWeather(index: i)
+                            }
+                    }
+                    .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
                 }
             }
         }
         .edgesIgnoringSafeArea(.top)
-        .background(WeatherBackground())
+        .background(WeatherBackground(skycon: viewModel.weatherDetialModels.models[viewModel.currentIndex].skycon))
         .tabViewStyle(.page(indexDisplayMode: .always))
         .indexViewStyle(.page(backgroundDisplayMode: .always))
     }
