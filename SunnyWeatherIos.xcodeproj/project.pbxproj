@@ -32,7 +32,10 @@
 		9D0527DF2758DA670047C390 /* icon_gray_bg_rain_snow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D0527CD2758DA670047C390 /* icon_gray_bg_rain_snow.png */; };
 		9D0527E02758DA670047C390 /* icon_gray_bg_overcast.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D0527CE2758DA670047C390 /* icon_gray_bg_overcast.png */; };
 		9D0527E22758DB750047C390 /* SkyconToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0527E12758DB750047C390 /* SkyconToImage.swift */; };
+		9D0EC6A92760B86600219DA2 /* AirPositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0EC6A82760B86600219DA2 /* AirPositionView.swift */; };
+		9D0EC6AC2760F70A00219DA2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0EC6AB2760F70A00219DA2 /* LocationManager.swift */; };
 		9D2F892A275C8E9D00933D77 /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F8929275C8E9D00933D77 /* CityView.swift */; };
+		9D34B0AF275F9A9200C75F3C /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D34B0AE275F9A9200C75F3C /* RefreshableScrollView.swift */; };
 		9D3C07792753CC0400059C3F /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C07782753CC0400059C3F /* InformationView.swift */; };
 		9D3C077B2753DE2E00059C3F /* LifeIndexInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C077A2753DE2E00059C3F /* LifeIndexInformation.swift */; };
 		9D478B3D275E2F8200FB62DD /* location_.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D478B3C275E2F8200FB62DD /* location_.png */; };
@@ -91,6 +94,8 @@
 		9DB0D24127391A9C00ACA064 /* WeatherDetialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0D24027391A9C00ACA064 /* WeatherDetialModel.swift */; };
 		9DB0D2462743DA3A00ACA064 /* SkyconToName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0D2452743DA3A00ACA064 /* SkyconToName.swift */; };
 		9DB0D2482743E53A00ACA064 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0D2472743E53A00ACA064 /* Date.swift */; };
+		9DF54D4E276094CD00CCAE2D /* AirDesToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF54D4D276094CD00CCAE2D /* AirDesToColor.swift */; };
+		9DF54D5027609B8900CCAE2D /* PopupCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF54D4F27609B8900CCAE2D /* PopupCardStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,7 +145,10 @@
 		9D0527CD2758DA670047C390 /* icon_gray_bg_rain_snow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_gray_bg_rain_snow.png; sourceTree = "<group>"; };
 		9D0527CE2758DA670047C390 /* icon_gray_bg_overcast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_gray_bg_overcast.png; sourceTree = "<group>"; };
 		9D0527E12758DB750047C390 /* SkyconToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyconToImage.swift; sourceTree = "<group>"; };
+		9D0EC6A82760B86600219DA2 /* AirPositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPositionView.swift; sourceTree = "<group>"; };
+		9D0EC6AB2760F70A00219DA2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9D2F8929275C8E9D00933D77 /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
+		9D34B0AE275F9A9200C75F3C /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		9D3C07782753CC0400059C3F /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		9D3C077A2753DE2E00059C3F /* LifeIndexInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeIndexInformation.swift; sourceTree = "<group>"; };
 		9D478B3C275E2F8200FB62DD /* location_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_.png; sourceTree = "<group>"; };
@@ -202,6 +210,8 @@
 		9DB0D24027391A9C00ACA064 /* WeatherDetialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetialModel.swift; sourceTree = "<group>"; };
 		9DB0D2452743DA3A00ACA064 /* SkyconToName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyconToName.swift; sourceTree = "<group>"; };
 		9DB0D2472743E53A00ACA064 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		9DF54D4D276094CD00CCAE2D /* AirDesToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirDesToColor.swift; sourceTree = "<group>"; };
+		9DF54D4F27609B8900CCAE2D /* PopupCardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupCardStyle.swift; sourceTree = "<group>"; };
 		D9A849F2943174577C06E4A6 /* Pods-SunnyWeatherIos-SunnyWeatherIosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunnyWeatherIos-SunnyWeatherIosUITests.debug.xcconfig"; path = "Target Support Files/Pods-SunnyWeatherIos-SunnyWeatherIosUITests/Pods-SunnyWeatherIos-SunnyWeatherIosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7640CE2393E3649448A16D2 /* Pods-SunnyWeatherIos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunnyWeatherIos.release.xcconfig"; path = "Target Support Files/Pods-SunnyWeatherIos/Pods-SunnyWeatherIos.release.xcconfig"; sourceTree = "<group>"; };
 		ED90BA1D4025C4429918BF63 /* Pods-SunnyWeatherIosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunnyWeatherIosTests.release.xcconfig"; path = "Target Support Files/Pods-SunnyWeatherIosTests/Pods-SunnyWeatherIosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -317,6 +327,21 @@
 			path = weather_icon;
 			sourceTree = "<group>";
 		};
+		9D0EC6AA2760F6E100219DA2 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		9D0EC6AF2760FF4E00219DA2 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				9D0EC6AB2760F70A00219DA2 /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		9D478B3E275E45C100FB62DD /* bg_frame */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +442,7 @@
 		9D6FFE7D27376A1E00519E1A /* Server */ = {
 			isa = PBXGroup;
 			children = (
+				9D0EC6AA2760F6E100219DA2 /* Location */,
 				9D0527AE2758B1820047C390 /* City */,
 				9D6FFE852737B4D200519E1A /* Weather */,
 			);
@@ -462,6 +488,7 @@
 		9D6FFE8A2737BF8900519E1A /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				9D0EC6AF2760FF4E00219DA2 /* Location */,
 				9D0527B42758B8280047C390 /* City */,
 				9D6FFE8B2737BFCE00519E1A /* Weather */,
 			);
@@ -518,6 +545,9 @@
 				9D3C07782753CC0400059C3F /* InformationView.swift */,
 				9D3C077A2753DE2E00059C3F /* LifeIndexInformation.swift */,
 				9D6C7C1627575174006D4B6D /* WeatherScrollview.swift */,
+				9D34B0AE275F9A9200C75F3C /* RefreshableScrollView.swift */,
+				9DF54D4F27609B8900CCAE2D /* PopupCardStyle.swift */,
+				9D0EC6A82760B86600219DA2 /* AirPositionView.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -539,6 +569,7 @@
 				9D0527E12758DB750047C390 /* SkyconToImage.swift */,
 				9D8BBD5E275F34110026F6A0 /* SkyconToBackground.swift */,
 				9D8BBD91275F3A630026F6A0 /* SkyconToBgframe.swift */,
+				9DF54D4D276094CD00CCAE2D /* AirDesToColor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -825,6 +856,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF54D4E276094CD00CCAE2D /* AirDesToColor.swift in Sources */,
 				9DB0D2462743DA3A00ACA064 /* SkyconToName.swift in Sources */,
 				9D4E6AC9274488AF006D0D2B /* DateInformation.swift in Sources */,
 				9DB0D23C273914C400ACA064 /* WeatherDetial.swift in Sources */,
@@ -836,10 +868,13 @@
 				9D3C07792753CC0400059C3F /* InformationView.swift in Sources */,
 				9D6FFE5027375E3200519E1A /* ContentView.swift in Sources */,
 				9D8BBD5F275F34110026F6A0 /* SkyconToBackground.swift in Sources */,
+				9D0EC6A92760B86600219DA2 /* AirPositionView.swift in Sources */,
+				9D0EC6AC2760F70A00219DA2 /* LocationManager.swift in Sources */,
 				9DA7C8592759FBE0009EE64D /* Persistence.swift in Sources */,
 				9D6C7C1727575174006D4B6D /* WeatherScrollview.swift in Sources */,
 				9D4E6AC727448720006D0D2B /* TemperatureImformation.swift in Sources */,
 				9D6FFE4E27375E3200519E1A /* SunnyWeatherIosApp.swift in Sources */,
+				9DF54D5027609B8900CCAE2D /* PopupCardStyle.swift in Sources */,
 				9D478B5E275E5AF500FB62DD /* SearchResultModel.swift in Sources */,
 				9D6FFE872737B57200519E1A /* WeatherService.swift in Sources */,
 				9D4E6ACD27448B88006D0D2B /* HourlyTemperatureInformation.swift in Sources */,
@@ -857,6 +892,7 @@
 				9D6FFE8D2737C01300519E1A /* WeatherNetworkManager.swift in Sources */,
 				9D8BBD92275F3A630026F6A0 /* SkyconToBgframe.swift in Sources */,
 				9D4E6ACB27448A0D006D0D2B /* Air_AlertButton.swift in Sources */,
+				9D34B0AF275F9A9200C75F3C /* RefreshableScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1023,6 +1059,7 @@
 				INFOPLIST_FILE = SunnyWeatherIos/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "\\u9ec4\\u6d66\\u533a\\u5357\\u4eac\\u4e1c\\u8def\\u8857\\u9053\\u5357\\u4eac\\u897f\\u8def77\\u53f7\\u4eba\\u6c11\\u516c\\u56ed";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "您的位置信息将被用于获取您所在位置的天气信息。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1056,6 +1093,7 @@
 				INFOPLIST_FILE = SunnyWeatherIos/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "\\u9ec4\\u6d66\\u533a\\u5357\\u4eac\\u4e1c\\u8def\\u8857\\u9053\\u5357\\u4eac\\u897f\\u8def77\\u53f7\\u4eba\\u6c11\\u516c\\u56ed";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "您的位置信息将被用于获取您所在位置的天气信息。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

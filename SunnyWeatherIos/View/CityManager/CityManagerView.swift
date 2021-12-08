@@ -13,7 +13,7 @@ struct CityManagerView: View {
     @State private var queryString = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var isEditMode: EditMode = .inactive
-
+    
     var body: some View {
         List{
             Button(action: {
@@ -41,7 +41,8 @@ struct CityManagerView: View {
         .navigationBarTitle("城市管理", displayMode: .large)
         .navigationBarItems(leading: backButton, trailing: editButton)
         .navigationBarBackButtonHidden(true)
-        .searchable(text: $queryString.onChange{ qString in            cityViewModel.getSearchResult(queryString: qString)
+        .searchable(text: $queryString.onChange{ qString in
+            cityViewModel.getSearchResult(queryString: qString)
         }, placement: .navigationBarDrawer(displayMode: .always), prompt: "搜索全国城市", suggestions: {
             if !queryString.isEmpty {
                 ForEach(cityViewModel.searchResultModel.result.indices, id: \.self) { i in
@@ -82,11 +83,11 @@ struct CityManagerView: View {
     }
     
     private func onDelete(at offsets: IndexSet) {
-        cityViewModel.weatherDetialModels.models.remove(atOffsets: offsets)
+        cityViewModel.deleteModels(at: offsets)
     }
     
     private func onMove(source: IndexSet, destination: Int) {
-        cityViewModel.weatherDetialModels.models.move(fromOffsets: source, toOffset: destination)
+        cityViewModel.moveModels(source: source, destination: destination)
     }
 }
 

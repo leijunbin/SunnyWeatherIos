@@ -69,8 +69,13 @@ struct Description: Codable {
 }
 
 struct Hourly: Codable {
-    var temperature: [DV]
+    var temperature: [DD]
     var skycon: [DV]
+}
+
+struct DD: Codable {
+    var datetiem: String
+    var value: Double
 }
 
 struct DV: Codable {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeatherScrollview: View {
     var weatherDetialModel: WeatherDetialModel
+    var isShowAlert: Bool
     
     var body: some View {
         VStack {
@@ -19,8 +20,8 @@ struct WeatherScrollview: View {
                 DateInformation(weatherDetialModel: weatherDetialModel)
             }
             Spacer()
-                .frame(height: 0)
-            Air_AlertButton()
+                .frame(height: 10)
+            Air_AlertButton(weatherDetialModel: weatherDetialModel, isShowAlert: isShowAlert)
             Spacer()
                 .frame(height: 25)
             HourlyTemperatureInformation(weatherDetialModel: weatherDetialModel)
@@ -63,6 +64,6 @@ struct WeatherScrollview: View {
 
 struct WeatherScrollview_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherScrollview(weatherDetialModel: WeatherDetialModel())
+        WeatherScrollview(weatherDetialModel: WeatherDetialModel(),isShowAlert: false)
     }
 }

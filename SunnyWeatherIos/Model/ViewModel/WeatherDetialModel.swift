@@ -8,10 +8,12 @@
 import Foundation
 
 struct WeatherDetialModels {
-    var models = [WeatherDetialModel](repeating: WeatherDetialModel(), count: 3)
+    var models = [WeatherDetialModel](repeating: WeatherDetialModel(), count: 1)
 }
 
 struct WeatherDetialModel {
+    var isShowAlert = false
+    
     var city: String
     var district: String
     var township: String
@@ -42,6 +44,10 @@ struct WeatherDetialModel {
     var ultraviolet: String
     var dressing: String
     
+    var air_quality: Air
+    
+    var alert = [Alerts](repeating: Alerts(), count: 1)
+    
     init(){
         city = "Beijing"
         lat = 39.909229
@@ -63,6 +69,7 @@ struct WeatherDetialModel {
         dressing = "H"
         district = "Beijing"
         township = "Xueyuanlu"
+        air_quality = Air()
     }
 }
 
@@ -94,3 +101,38 @@ struct DailyInformation {
     }
 }
 
+struct Air {
+    var pm25: Double
+    var pm10: Double
+    var o3: Double
+    var so2: Double
+    var no2: Double
+    var co: Double
+    var aqi: Double
+    var description: String
+    
+    init() {
+        pm25 = 0
+        pm10 = 0
+        o3 = 0
+        so2 = 0
+        no2 = 0
+        co = 0
+        aqi = 0
+        description = "优"
+    }
+}
+
+struct Alerts {
+    var code: Int
+    var description: String
+    var title: String
+    var source: String
+    
+    init() {
+        code = 01
+        description = " "
+        title = " "
+        source = " "
+    }
+}

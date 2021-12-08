@@ -1,11 +1,8 @@
 ${PODS_ROOT}/Target Support Files/Pods-SunnyWeatherIos-SunnyWeatherIosUITests/Pods-SunnyWeatherIos-SunnyWeatherIosUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/CleanJSON/CleanJSON.framework
-${BUILT_PRODUCTS_DIR}/ExytePopupView/ExytePopupView.framework
-${BUILT_PRODUCTS_DIR}/Introspect/Introspect.framework
 ${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
 ${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework
 ${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
-${BUILT_PRODUCTS_DIR}/SwiftUIRefresh/SwiftUIRefresh.framework

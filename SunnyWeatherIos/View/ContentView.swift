@@ -10,12 +10,14 @@ import CoreData
 
 struct ContentView: View {
     init() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = .blue
+        UITableView.appearance().showsVerticalScrollIndicator = false
         
+        UIPageControl.appearance().currentPageIndicatorTintColor = .blue
+
         let scrollbarAppearance =  UINavigationBarAppearance()
         scrollbarAppearance.configureWithTransparentBackground()
         UINavigationBar.appearance().scrollEdgeAppearance = scrollbarAppearance
-        
+
         let standardbarAppearance =  UINavigationBarAppearance()
         standardbarAppearance.backgroundEffect = UIBlurEffect.init(style: .regular)
         standardbarAppearance.shadowColor = .clear
@@ -35,3 +37,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

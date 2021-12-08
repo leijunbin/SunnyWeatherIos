@@ -8,7 +8,6 @@
 import SwiftUI
 import RxSwift
 import Alamofire
-import SwiftUIRefresh
 
 struct WeatherDetial: View {
     @ObservedObject var viewModel = WeatherDetialViewModel()
@@ -17,30 +16,33 @@ struct WeatherDetial: View {
         TabView(selection: $viewModel.currentIndex) {
             ForEach(viewModel.weatherDetialModels.models.indices, id: \.self) { i in
                 if i == 0 {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i])
+                    ScrollRefreshable(title: "正在获取最新天气", tintColor: .black, onRefresh: {
+                        viewModel.getCurrentLocation()
+                        await Task.sleep(1_000_000_000)
+                    }) {
+                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i], isShowAlert: viewModel.weatherDetialModels.models[i].isShowAlert)
                             .navigationBarItems(leading: addButton)
-                            .tabItem {
-                                Image(systemName: "location")
-                            }
+                            .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
                             .onAppear {
-                                viewModel.refreshWeather(index: i)
+                                viewModel.getCurrentLocation()
                             }
                     }
-                    .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
                     .tabItem {
                         Image(systemName: "location")
                     }
                 }
                 else {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i])
+                    ScrollRefreshable(title: "正在获取最新天气", tintColor: .black, onRefresh: {
+                        viewModel.refreshWeather(index: i)
+                        await Task.sleep(1_000_000_000)
+                    }) {
+                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i], isShowAlert: viewModel.weatherDetialModels.models[i].isShowAlert)
                             .navigationBarItems(leading: addButton)
+                            .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
                             .onAppear {
                                 viewModel.refreshWeather(index: i)
                             }
                     }
-                    .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
                 }
             }
         }
@@ -48,6 +50,7 @@ struct WeatherDetial: View {
         .background(WeatherBackground(skycon: viewModel.weatherDetialModels.models[viewModel.currentIndex].skycon))
         .tabViewStyle(.page(indexDisplayMode: .always))
         .indexViewStyle(.page(backgroundDisplayMode: .always))
+        
     }
     
     private var addButton: some View {

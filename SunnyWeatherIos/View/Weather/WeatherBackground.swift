@@ -13,6 +13,7 @@ struct WeatherBackground: View {
         Image(getSkyconBackground(skycon: skycon))
             .resizable()
             .scaledToFill()
+            .ignoresSafeArea()
     }
 }
 
