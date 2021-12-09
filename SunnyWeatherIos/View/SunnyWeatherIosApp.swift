@@ -9,12 +9,27 @@ import SwiftUI
 
 @main
 struct SunnyWeatherIosApp: App {
-    let persistenceController = PersistenceController.shared
+    //let persistenceController = PersistenceController.shared
+    
+    init() {
+        UITableView.appearance().showsVerticalScrollIndicator = false
+        
+        UIPageControl.appearance().currentPageIndicatorTintColor = .blue
 
+        let scrollbarAppearance =  UINavigationBarAppearance()
+        scrollbarAppearance.configureWithTransparentBackground()
+        UINavigationBar.appearance().scrollEdgeAppearance = scrollbarAppearance
+
+        let standardbarAppearance =  UINavigationBarAppearance()
+        standardbarAppearance.backgroundEffect = UIBlurEffect.init(style: .regular)
+        standardbarAppearance.shadowColor = .clear
+        standardbarAppearance.shadowColor = nil
+        UINavigationBar.appearance().standardAppearance = standardbarAppearance
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

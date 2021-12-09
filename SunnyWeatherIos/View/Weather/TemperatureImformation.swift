@@ -9,13 +9,15 @@ import SwiftUI
 
 struct TemperatureImformation: View {
     var weatherDetialModel: WeatherDetialModel
+    var temperatureUnitOn: String
+    
     var body: some View {
         HStack {
             HStack{
                 Text(String(Int(weatherDetialModel.temperature)))
                     .font(.system(size: 100))
                 VStack{
-                    Text("℃")
+                    Text(temperatureUnitOn)
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                     Text(getSkyconName(skycon: weatherDetialModel.skycon))
@@ -30,6 +32,6 @@ struct TemperatureImformation: View {
 
 struct TemperatureImformation_Previews: PreviewProvider {
     static var previews: some View {
-        TemperatureImformation(weatherDetialModel: WeatherDetialModel())
+        TemperatureImformation(weatherDetialModel: WeatherDetialModel(), temperatureUnitOn: " ")
     }
 }

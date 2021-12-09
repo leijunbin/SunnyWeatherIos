@@ -9,12 +9,13 @@ import SwiftUI
 
 struct DateInformation: View {
     var weatherDetialModel: WeatherDetialModel
+    var temperatureUnitOn: String
     
     var body: some View {
         HStack(spacing: 20) {
             Text(weatherDetialModel.date)
                 .font(.system(size: 18))
-            let todayTemperture=String(Int(weatherDetialModel.dateMaxTemperture)) + "℃/" + String(Int(weatherDetialModel.dateMinTemperture)) + "℃"
+            let todayTemperture=String(Int(weatherDetialModel.dateMaxTemperture)) + temperatureUnitOn + "/" + String(Int(weatherDetialModel.dateMinTemperture)) + temperatureUnitOn
             Text(todayTemperture)
                 .font(.system(size: 18))
             Spacer()
@@ -24,6 +25,6 @@ struct DateInformation: View {
 
 struct DateInformation_Previews: PreviewProvider {
     static var previews: some View {
-        DateInformation(weatherDetialModel: WeatherDetialModel())
+        DateInformation(weatherDetialModel: WeatherDetialModel(), temperatureUnitOn: " ")
     }
 }

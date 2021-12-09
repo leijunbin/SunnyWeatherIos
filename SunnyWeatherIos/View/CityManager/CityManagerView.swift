@@ -9,27 +9,26 @@ import SwiftUI
 import Alamofire
 
 struct CityManagerView: View {
-    var cityViewModel: WeatherDetialViewModel
+    @ObservedObject var cityViewModel: WeatherDetialViewModel
     @State private var queryString = ""
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var isEditMode: EditMode = .inactive
     
     var body: some View {
         List{
             Button(action: {
                 cityViewModel.currentIndex = 0
-                cityViewModel.isBack = false
+                cityViewModel.isCityManager = false
             }) {
-                CityView(weatherDetialModel: cityViewModel.weatherDetialModels.models[0], flag: false)
+                CityView(weatherDetialModel: cityViewModel.weatherDetialModels.models[0], flag: false, temperatureUnitOn: getTempuratureUnit(index: cityViewModel.temperatureUnit))
             }
             .listRowSeparator(.hidden)
             ForEach(cityViewModel.weatherDetialModels.models.indices,id: \.self) { i in
                 if i != 0 {
                     Button(action: {
                         cityViewModel.currentIndex = i
-                        cityViewModel.isBack = false
+                        cityViewModel.isCityManager = false
                     }) {
-                        CityView(weatherDetialModel: cityViewModel.weatherDetialModels.models[i], flag: true)
+                        CityView(weatherDetialModel: cityViewModel.weatherDetialModels.models[i], flag: true, temperatureUnitOn: getTempuratureUnit(index: cityViewModel.temperatureUnit))
                     }
                     .listRowSeparator(.hidden)
                 }
@@ -69,16 +68,17 @@ struct CityManagerView: View {
                     break
             }
         }, label: {
-            isEditMode.isEditing ? Image(systemName: "xmark").foregroundColor(.black) : Image(systemName: "slider.horizontal.3").foregroundColor(.black)
+            isEditMode.isEditing ? Image(systemName: "xmark").foregroundColor(.black).frame(width: 20, height: 20) : Image(systemName: "slider.horizontal.3").foregroundColor(.black).frame(width: 20, height: 20)
         })
     }
     
     private var backButton: some View {
         Button(action: {
-            cityViewModel.isBack = false
+            cityViewModel.isCityManager = false
         }) {
             Image(systemName: "arrow.backward")
                 .foregroundColor(.black)
+                .frame(width: 20, height: 20)
         }
     }
     

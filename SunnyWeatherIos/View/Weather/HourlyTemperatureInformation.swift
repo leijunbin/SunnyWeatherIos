@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HourlyTemperatureInformation: View {
     var weatherDetialModel: WeatherDetialModel
+    var temperatureUnitOn: String
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -19,7 +20,7 @@ struct HourlyTemperatureInformation: View {
                         Image(getSkyconImage(skycon: weatherDetialModel.hourlyInformation[i].skycon))
                             .resizable()
                             .frame(width: 30, height: 30, alignment: .center)
-                        Text(String(Int(weatherDetialModel.hourlyInformation[i].hourlyTemperture)) + "℃")
+                        Text(String(Int(weatherDetialModel.hourlyInformation[i].hourlyTemperture)) + temperatureUnitOn)
                     }
                 }
             }
@@ -29,6 +30,6 @@ struct HourlyTemperatureInformation: View {
 
 struct HourlyTemperatureInformation_Previews: PreviewProvider {
     static var previews: some View {
-        HourlyTemperatureInformation(weatherDetialModel: WeatherDetialModel())
+        HourlyTemperatureInformation(weatherDetialModel: WeatherDetialModel(), temperatureUnitOn: " ")
     }
 }

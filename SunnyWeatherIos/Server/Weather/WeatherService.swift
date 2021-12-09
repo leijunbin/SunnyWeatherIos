@@ -12,6 +12,7 @@ let weatherToken = "cjVEVQndqLbtJ7H8"
 
 enum WeatherService {
     case getWeather(lat: Double, lon: Double)
+    case getWeatherImperialUnit(lat: Double, lon: Double)
     case searchPlace(queryString: String)
 }
 
@@ -24,6 +25,8 @@ extension WeatherService: TargetType {
         switch self {
         case .getWeather(let lat, let lon):
             return "/v2.5/\(weatherToken)/\(lon),\(lat)/weather.json"
+        case .getWeatherImperialUnit(let lat, let lon):
+            return "/v2.5/\(weatherToken)/\(lon),\(lat)/weather.json"
         case .searchPlace(_):
             return "v2/place"
         }
@@ -32,6 +35,8 @@ extension WeatherService: TargetType {
     var method: Moya.Method {
         switch self {
         case .getWeather(_, _):
+            return .get
+        case .getWeatherImperialUnit(_, _):
             return .get
         case .searchPlace(_):
             return .get
@@ -42,6 +47,9 @@ extension WeatherService: TargetType {
         switch self {
         case .getWeather(_, _):
             let parameters: [String: Any] = ["lang" : "zh_CN", "alert" : "true"]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        case .getWeatherImperialUnit(_, _):
+            let parameters: [String: Any] = ["lang" : "zh_CN", "alert" : "true", "unit" : "imperial"]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         case .searchPlace(let queryString):
             let parameters: [String: Any] = ["query" : "\(queryString)","token" : "\(weatherToken)", "lang" : "zh_CN"]

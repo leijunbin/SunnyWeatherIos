@@ -14,12 +14,21 @@ class WeatherDetialViewModel: ObservableObject {
     private let cityNetworkManger = CityNetworkManager()
     private let locationManager = LocationManager()
     private let disposeBag = DisposeBag()
+    private let userDefaultsManager = UserDefaultsManager()
     
     @Published var currentIndex = 0
-    @Published var isBack = false
+    @Published var isCityManager = false
+    @Published var isSetting = false
     
-    @Published var weatherDetialModels = WeatherDetialModels()
+    @Published var temperatureUnit = UserDefaults.standard.integer(forKey: "temperatureUnit")
+    @Published var windSpeedUnit = UserDefaults.standard.integer(forKey: "windSpeedUnit")
+    
     @Published var searchResultModel = SearchResultModel()
+    
+    @Published var weatherDetialModels: WeatherDetialModels
+    init() {
+        weatherDetialModels = userDefaultsManager.getAllPlace()
+    }
     
     func refreshWeather(index: Int) {
         weatherNetworkManger.getWeather(lat: weatherDetialModels.models[index].lat, lon: weatherDetialModels.models[index].lon).subscribe(onNext:{ weatherModel in
@@ -39,7 +48,12 @@ class WeatherDetialViewModel: ObservableObject {
                 self.weatherDetialModels.models[index].dailyInformation[i].dateMinTemperture = weatherModel.result.daily.temperature[i].min + 0.5
             }
             self.weatherDetialModels.models[index].windDir = self.getWindDir(value: weatherModel.result.realtime.wind.direction)
-            self.weatherDetialModels.models[index].windSpeed = weatherModel.result.realtime.wind.speed
+            if self.windSpeedUnit == 0 {
+                self.weatherDetialModels.models[index].windSpeed = changeWindDoubleToString(speed: weatherModel.result.realtime.wind.speed)
+            }
+            else if self.windSpeedUnit == 1 {
+                self.weatherDetialModels.models[index].windSpeed = String(weatherModel.result.realtime.wind.speed) + "km/h"
+            }
             self.weatherDetialModels.models[index].humidity = Int(weatherModel.result.realtime.humidity * 100)
             self.weatherDetialModels.models[index].pressure = Int(weatherModel.result.realtime.pressure / 100)
             self.weatherDetialModels.models[index].visibility = weatherModel.result.realtime.visibility
@@ -76,9 +90,18 @@ class WeatherDetialViewModel: ObservableObject {
             else {
                 self.weatherDetialModels.models[index].isShowAlert = false
             }
+            if self.temperatureUnit == 1 {
+                self.refreshImperialUnit(index: index)
+            }
             self.getCityName(index: index)
         })
         .disposed(by: disposeBag)
+    }
+    
+    func refreshAlltempure() {
+        for i in 0..<weatherDetialModels.models.count {
+            refreshWeather(index: i)
+        }
     }
     
     func getCurrentLocation() {
@@ -107,10 +130,12 @@ class WeatherDetialViewModel: ObservableObject {
     func deleteModels(at offsets: IndexSet) {
         currentIndex = 0
         weatherDetialModels.models.remove(atOffsets: offsets)
+        userDefaultsManager.saveAllPlace(result: weatherDetialModels)
     }
     
     func moveModels(source: IndexSet, destination: Int) {
         weatherDetialModels.models.move(fromOffsets: source, toOffset: destination)
+        userDefaultsManager.saveAllPlace(result: weatherDetialModels)
     }
     
     func addModels(lat: Double, lon: Double) {
@@ -121,6 +146,24 @@ class WeatherDetialViewModel: ObservableObject {
         let pos = weatherDetialModels.models.count - 1
         refreshWeather(index: pos)
         self.currentIndex = pos
+        userDefaultsManager.saveAllPlace(result: weatherDetialModels)
+    }
+    
+    private func refreshImperialUnit(index: Int) {
+        weatherNetworkManger.getWeatherImperialUnit(lat: weatherDetialModels.models[index].lat, lon: weatherDetialModels.models[index].lon).subscribe(onNext:{ weatherModel in
+            self.weatherDetialModels.models[index].temperature = weatherModel.result.realtime.temperature + 0.5
+            self.weatherDetialModels.models[index].dateMaxTemperture = weatherModel.result.daily.temperature.first?.max ?? 0.00
+            self.weatherDetialModels.models[index].dateMinTemperture = weatherModel.result.daily.temperature.first?.min ?? 0.00
+            for i in 0..<min(24, weatherModel.result.hourly.skycon.count) {
+                self.weatherDetialModels.models[index].hourlyInformation[i].hourlyTemperture = weatherModel.result.hourly.temperature[i].value + 0.5
+            }
+            for i in 0..<min(5, weatherModel.result.daily.skycon.count) {
+                self.weatherDetialModels.models[index].dailyInformation[i].dateMaxTemperture = weatherModel.result.daily.temperature[i].max + 0.5
+                self.weatherDetialModels.models[index].dailyInformation[i].dateMinTemperture = weatherModel.result.daily.temperature[i].min + 0.5
+            }
+            self.weatherDetialModels.models[index].apparent_temperature = Int(weatherModel.result.realtime.apparent_temperature + 0.5) 
+        })
+        .disposed(by: disposeBag)
     }
     
     private func getCityName(index: Int) {

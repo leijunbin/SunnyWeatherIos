@@ -20,8 +20,8 @@ struct WeatherDetial: View {
                         viewModel.getCurrentLocation()
                         await Task.sleep(1_000_000_000)
                     }) {
-                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i], isShowAlert: viewModel.weatherDetialModels.models[i].isShowAlert)
-                            .navigationBarItems(leading: addButton)
+                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i], isShowAlert: viewModel.weatherDetialModels.models[i].isShowAlert, temperatureUnitOn: getTempuratureUnit(index: viewModel.temperatureUnit))
+                            .navigationBarItems(leading: addButton, trailing: settingButton)
                             .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
                             .onAppear {
                                 viewModel.getCurrentLocation()
@@ -36,8 +36,8 @@ struct WeatherDetial: View {
                         viewModel.refreshWeather(index: i)
                         await Task.sleep(1_000_000_000)
                     }) {
-                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i], isShowAlert: viewModel.weatherDetialModels.models[i].isShowAlert)
-                            .navigationBarItems(leading: addButton)
+                        WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i], isShowAlert: viewModel.weatherDetialModels.models[i].isShowAlert, temperatureUnitOn: getTempuratureUnit(index: viewModel.temperatureUnit))
+                            .navigationBarItems(leading: addButton, trailing: settingButton)
                             .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
                             .onAppear {
                                 viewModel.refreshWeather(index: i)
@@ -55,11 +55,27 @@ struct WeatherDetial: View {
     
     private var addButton: some View {
         HStack(spacing: 0){
-            NavigationLink(destination: CityManagerView(cityViewModel: viewModel), isActive: $viewModel.isBack) {}.frame(width: 0, height: 0)
+            NavigationLink(destination: CityManagerView(cityViewModel: viewModel), isActive: $viewModel.isCityManager) {}.frame(width: 0, height: 0)
             Button(action: {
-                viewModel.isBack = true
+                viewModel.isCityManager = true
             }) {
                 Image(systemName: "plus")
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(.black)
+                    .foregroundStyle(.tint)
+            }
+        }
+    }
+    
+    private var settingButton: some View {
+        HStack(spacing: 0){
+            NavigationLink(destination: SettingView(settingViewModel: viewModel), isActive: $viewModel.isSetting) {}.frame(width: 0, height: 0)
+            Button(action: {
+                viewModel.isSetting = true
+            }) {
+                Image("setting")
+                    .resizable()
+                    .frame(width: 20, height: 20)
                     .foregroundColor(.black)
                     .foregroundStyle(.tint)
             }

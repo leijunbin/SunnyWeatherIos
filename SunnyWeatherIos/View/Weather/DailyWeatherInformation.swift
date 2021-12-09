@@ -9,12 +9,14 @@ import SwiftUI
 
 struct DailyWeatherInformation: View {
     var dailyInformation: DailyInformation
+    var temperatureUnitOn: String
+    
     var body: some View {
         ZStack {
             HStack(alignment: .center) {
                 Text(dailyInformation.time)
                 Spacer()
-                let temperature = String(Int(dailyInformation.dateMaxTemperture)) + "℃/" + String(Int(dailyInformation.dateMinTemperture)) + "℃"
+                let temperature = String(Int(dailyInformation.dateMaxTemperture)) + temperatureUnitOn + "/" + String(Int(dailyInformation.dateMinTemperture)) + temperatureUnitOn
                 Text(temperature)
             }
             HStack(alignment: .center) {
@@ -30,6 +32,6 @@ struct DailyWeatherInformation: View {
 
 struct DailyWeatherInformation_Previews: PreviewProvider {
     static var previews: some View {
-        DailyWeatherInformation(dailyInformation: DailyInformation())
+        DailyWeatherInformation(dailyInformation: DailyInformation(), temperatureUnitOn: " ")
     }
 }

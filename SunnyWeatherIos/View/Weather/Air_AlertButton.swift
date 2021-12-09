@@ -68,7 +68,7 @@ struct Air_AlertButton: View {
                 }
                 .padding(Edge.Set.init(arrayLiteral: .top), 15)
                 .padding(Edge.Set.init(arrayLiteral: .top, .bottom, .leading, .trailing), 15)
-                .background(Color.white)
+                .background(Image("bg_air_alert").resizable().scaledToFill().ignoresSafeArea())
             } onEnd: {
                 print("complete")
             }
@@ -98,6 +98,9 @@ struct Air_AlertButton: View {
                         List {
                             ForEach(weatherDetialModel.alert.indices, id: \.self) { i in
                                 HStack{
+                                    Image(getAlertCodeImage(level: weatherDetialModel.alert[i].code))
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
                                     Text(weatherDetialModel.alert[i].title)
                                         .font(.title2)
                                 }
@@ -115,7 +118,7 @@ struct Air_AlertButton: View {
                     }
                     .padding(Edge.Set.init(arrayLiteral: .top), 15)
                     .padding(Edge.Set.init(arrayLiteral: .top, .bottom, .leading, .trailing), 15)
-                    .background(Color.white)
+                    .background(Image("bg_air_alert").resizable().scaledToFill().ignoresSafeArea())
                 } onEnd: {
                     print("complete")
                 }

@@ -23,6 +23,15 @@ class WeatherNetworkManager {
             .map(WeatherModel.self, using: decoder)
             .asObservable()
     }
+    
+    func getWeatherImperialUnit(lat: Double, lon: Double) -> Observable<WeatherModel> {
+        let decoder = CleanJSONDecoder()
+        return provider.rx
+            .request(.getWeatherImperialUnit(lat: lat, lon: lon))
+            .filterSuccessfulStatusCodes()
+            .map(WeatherModel.self, using: decoder)
+            .asObservable()
+    }
 
     func searchCity(queryString: String) -> Observable<SearchModel> {
         let decoder = CleanJSONDecoder()
