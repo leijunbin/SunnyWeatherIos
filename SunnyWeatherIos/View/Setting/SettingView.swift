@@ -66,7 +66,13 @@ struct SettingView: View {
                 
             }
             Section(header: Text("关于软件")) {
-                //NavigationLink()
+                HStack{
+                    NavigationLink(destination: AboutSoftwareView())
+                    {
+                        Text("关于SunnyWeatherIos")
+                            .foregroundColor(.black)
+                    }
+                }
             }
         }
         .navigationBarTitle("设置", displayMode: .large)

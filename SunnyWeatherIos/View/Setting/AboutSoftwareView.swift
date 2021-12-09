@@ -8,13 +8,41 @@
 import SwiftUI
 
 struct AboutSoftwareView: View {
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.vertical, showsIndicators: false){
+            VStack{
+                Spacer()
+                    .frame(height: 50)
+                Image("app_icon")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                Text("SunnyWeatherIos")
+                Text("V1.3")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                Spacer()
+                    .frame(height: 150)
+                Text("barars出品")
+                Text("https://github.com/leijunbin/SunnyWeatherIos")
+                    .font(.system(size: 15))
+            }
+        }
+        .navigationBarTitle("关于软件", displayMode: .large)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton)
+    }
+    
+    private var backButton: some View {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "arrow.backward")
+                .foregroundColor(.black)
+                .frame(width: 20, height: 20)
+        }
     }
 }
 
-struct AboutSoftwareView_Previews: PreviewProvider {
-    static var previews: some View {
-        AboutSoftwareView()
-    }
-}
