@@ -18,14 +18,11 @@ struct WeatherDetial: View {
                 if i == 0 {
                     ScrollRefreshable(title: "正在获取最新天气", tintColor: .black, onRefresh: {
                         viewModel.getCurrentLocation()
-                        await Task.sleep(1_000_000_000)
+                        await Task.sleep(1_500_000_000)
                     }) {
                         WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i], isShowAlert: viewModel.weatherDetialModels.models[i].isShowAlert, temperatureUnitOn: getTempuratureUnit(index: viewModel.temperatureUnit))
                             .navigationBarItems(leading: addButton, trailing: settingButton)
                             .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
-                            .onAppear {
-                                viewModel.getCurrentLocation()
-                            }
                     }
                     .tabItem {
                         Image(systemName: "location")
@@ -34,14 +31,11 @@ struct WeatherDetial: View {
                 else {
                     ScrollRefreshable(title: "正在获取最新天气", tintColor: .black, onRefresh: {
                         viewModel.refreshWeather(index: i)
-                        await Task.sleep(1_000_000_000)
+                        await Task.sleep(1_500_000_000)
                     }) {
                         WeatherScrollview(weatherDetialModel: viewModel.weatherDetialModels.models[i], isShowAlert: viewModel.weatherDetialModels.models[i].isShowAlert, temperatureUnitOn: getTempuratureUnit(index: viewModel.temperatureUnit))
                             .navigationBarItems(leading: addButton, trailing: settingButton)
                             .navigationBarTitle(viewModel.weatherDetialModels.models[i].city)
-                            .onAppear {
-                                viewModel.refreshWeather(index: i)
-                            }
                     }
                 }
             }
@@ -50,7 +44,17 @@ struct WeatherDetial: View {
         .background(WeatherBackground(skycon: viewModel.weatherDetialModels.models[viewModel.currentIndex].skycon))
         .tabViewStyle(.page(indexDisplayMode: .always))
         .indexViewStyle(.page(backgroundDisplayMode: .always))
-        
+        .onAppear {
+            for i in 0..<viewModel.weatherDetialModels.models.count {
+                if i == 0 {
+                    viewModel.getCurrentLocation()
+                }
+                else {
+                    viewModel.refreshWeather(index: i)
+                }
+            }
+            print(viewModel.isCityManager)
+        }
     }
     
     private var addButton: some View {

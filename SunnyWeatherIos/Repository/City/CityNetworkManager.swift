@@ -23,4 +23,13 @@ class CityNetworkManager {
             .map(CityModel.self, using: decoder)
             .asObservable()
     }
+    
+    func searchCity(queryString: String) -> Observable<SearchModel> {
+        let decoder = CleanJSONDecoder()
+        return provider.rx
+            .request(.searchPlace(queryString: queryString))
+            .filterSuccessfulStatusCodes()
+            .map(SearchModel.self, using: decoder)
+            .asObservable()
+    }
 }

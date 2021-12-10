@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct SunnyWeatherIosApp: App {
-    //let persistenceController = PersistenceController.shared
     
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -25,6 +24,8 @@ struct SunnyWeatherIosApp: App {
         standardbarAppearance.shadowColor = .clear
         standardbarAppearance.shadowColor = nil
         UINavigationBar.appearance().standardAppearance = standardbarAppearance
+        
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "取消"
     }
     
     var body: some Scene {

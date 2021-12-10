@@ -20,7 +20,7 @@ struct AboutSoftwareView: View {
                     .resizable()
                     .frame(width: 100, height: 100)
                 Text("SunnyWeatherIos")
-                Text("V1.3")
+                Text("V1.4")
                     .font(.subheadline)
                     .foregroundColor(.gray)
                 Spacer()

@@ -12,6 +12,7 @@ let mapToken = "2eda52df760c5e2e46265d8297f8b719"
 
 enum CityService {
     case getCityName(lat: Double, lon: Double)
+    case searchPlace(queryString: String)
 }
 
 extension CityService: TargetType {
@@ -23,12 +24,16 @@ extension CityService: TargetType {
         switch self {
         case .getCityName(_, _):
             return "/v3/geocode/regeo"
+        case .searchPlace(_):
+            return "/v3/assistant/inputtips"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .getCityName(_, _):
+            return .get
+        case .searchPlace(_):
             return .get
         }
     }
@@ -37,6 +42,9 @@ extension CityService: TargetType {
         switch self {
         case .getCityName(let lat, let lon):
             let parameters: [String: Any] = ["output" : "json", "location" : "\(lon),\(lat)", "key" : "\(mapToken)", "radius" : "10", "extensions" : "base"]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
+        case .searchPlace(let queryString):
+            let parameters: [String: Any] = ["output" : "json", "keywords" : "\(queryString)", "key" : "\(mapToken)"]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
     }

@@ -9,15 +9,12 @@ import Foundation
 import CoreLocation
 
 struct SearchModel: Codable {
-    var places: [Place]
+    var tips: [Place]
 }
 
 struct Place: Codable {
-    var formatted_address: String
-    var location: Location
-}
-
-struct Location: Codable {
-    var lat: Double
-    var lng: Double
+    var name: String
+    var district: String
+    var address: String
+    var location: String
 }

@@ -45,8 +45,15 @@ struct CityManagerView: View {
         }, placement: .navigationBarDrawer(displayMode: .always), prompt: "搜索全国城市", suggestions: {
             if !queryString.isEmpty {
                 ForEach(cityViewModel.searchResultModel.result.indices, id: \.self) { i in
-                    Text(cityViewModel.searchResultModel.result[i].formatted_address)
-                        .searchCompletion(String(i))
+                    VStack(alignment: .leading){
+                        Text(cityViewModel.searchResultModel.result[i].name)
+                            .foregroundColor(.black)
+                            .font(.title2)
+                        Text(cityViewModel.searchResultModel.result[i].district + " " + cityViewModel.searchResultModel.result[i].address)
+                            .foregroundColor(.gray)
+                            .font(.subheadline)
+                    }
+                    .searchCompletion(String(i))
                 }
             }
         })
