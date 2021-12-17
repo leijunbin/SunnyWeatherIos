@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-let mapToken = "2eda52df760c5e2e46265d8297f8b719"
+let mapToken = ""
 
 enum CityService {
     case getCityName(lat: Double, lon: Double)
