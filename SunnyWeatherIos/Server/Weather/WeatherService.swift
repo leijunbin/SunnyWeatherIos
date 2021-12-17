@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-let weatherToken = "cjVEVQndqLbtJ7H8"
+let weatherToken = ""
 
 enum WeatherService {
     case getWeather(lat: Double, lon: Double)
