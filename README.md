@@ -1,6 +1,8 @@
 # SunnyWeatherIos
 ## SunnyWeatherIos软件需求和界面设计相关
 
+<!--页面设计部分为雏形设计，实际成品在初期设计的部分上进行了部分调整-->
+
 ![](res/UI1.png)
 
 + 主界面（上）
@@ -59,7 +61,63 @@
 
 + 城市管理界面
 
-  + 
+  + 通过**模糊搜索**查找并添加想要展示的城市，支持**城市中文、城市全拼、citycode、adcode**，可精确到街道/具体住址。
+  + 添加后的城市以卡片形式展示在城市管理列表中，卡片上会简略展示某地区的温度、天气状况、空气质量，用户可以通过长按的方式对单个地区进行删除操作，也可**批量进行删除**。
+  + 城市列表中的城市添加完毕后将会以多页面的形式展示在主界面中，用户可以通过左右滑动来切换不同的城市，实现**多个页面间自由跳转**。
+
+
+
+## 软件视觉效果
+
+### 主界面
+![](res/UIN1.png)
+
+### 24小时内天气展示
+
+![](res/UIN2.png)
+
+### 未来五天内天气展示
+
+![](res/UIN3.png)
+
+### 气象预警和空气质量界面
+
+![](res/UIN4.png)
+
+![](res/UIN5.png)
+
+### 气象信息界面
+
+![](res/UIN6.png)
+
+### 生活建议界面
+
+![](res/UIN7.png)
+
+### 城市管理界面
+
+![](res/UIN8.png)
+
+### 设置界面
+
+![](res/UIN9.png)
+
+
+
+## 使用的开源库和API接口
+
++ 开源库
+
+	+ Moya：https://github.com/Moya/Moya
+	+ RxSwift：https://github.com/ReactiveX/RxSwift
+	+ CleanJson：https://github.com/Pircate/CleanJSON
+	+ RxCoreLocation：https://github.com/RxSwiftCommunity/RxCoreLocation
++ API接口
+  + 彩云天气API：https://open.caiyunapp.com/%E5%BD%A9%E4%BA%91%E5%A4%A9%E6%B0%94_API_%E4%B8%80%E8%A7%88%E8%A1%A8
+  + 高德地图API：https://lbs.amap.com/api/webservice/summary/
+
+
+
 
 ## 软件更新日志
 
