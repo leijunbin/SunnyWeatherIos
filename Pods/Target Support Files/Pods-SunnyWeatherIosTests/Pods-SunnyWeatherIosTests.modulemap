@@ -1,6 +1,0 @@
-framework module Pods_SunnyWeatherIosTests {
-  umbrella header "Pods-SunnyWeatherIosTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
